@@ -31,9 +31,9 @@
     <h1>Football History</h1>
         <h2>Record</h2>
     <div id="chart"></div>
-        <button class='small' onclick="teamAdd('data/bearsHistory.csv')">Bears</button>
-        <button class='small' onclick="teamAdd('data/falconsHistory.csv')">Falcons</button>
-        <button class='small' onclick="teamAdd('data/bengals_history.csv')">Bengals</button>
+        <button class='small' onclick="teamAdd('data/bearsHistory.csv','#000099')">Bears</button>
+        <button class='small' onclick="teamAdd('data/falconsHistory.csv','#ff0000')">Falcons</button>
+        <button class='small' onclick="teamAdd('data/bengals_history.csv','#ff9900')">Bengals</button>
         <h2>Offense and Defense Rank</h2>
         <div id="chart2"></div>
         <button class='small' onclick="teamLoad('data/bears.csv')">Bears</button>
@@ -42,3 +42,5 @@
     <script src="chart3.js" type="text/javascript"></script>
     </body>
 </html>
+
+<!--'data/bearsHistory.csv','#000099'   'data/falconsHistory.csv','#ff0000'    'data/bengals_history.csv','#ff9900'-->

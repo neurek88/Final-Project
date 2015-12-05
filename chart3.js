@@ -4,11 +4,14 @@ var chart = c3.generate({
     data: {
       url: 'data/bengals_history.csv',
       x: 'Year',
-      type: 'line',
+      colors: '#ff9900',
       hide: ['Year','Lg','Tm','L','T','Playoffs','PF','PA','PD','Coaches','AV','Passer','Rusher','Receiver','OffenseRank','Yds','DefenseRank','Yds','T/G','Pts±','Yds±','out of','MoV','SoS','SRS','OSRS','DSRS'],
     },
+  tooltip: {
+        grouped: false // Default true
+    },
   transition: {
-        duration: 500
+        duration: 760
       },
   legend:{
     hide: ['Year','Lg','Tm','L','T','Playoffs','PF','PA','PD','Coaches','AV','Passer','Rusher','Receiver','OffenseRank','Yds','DefenseRank','Yds','T/G','Pts±','Yds±','out of','MoV','SoS','SRS','OSRS','DSRS'],
@@ -29,9 +32,16 @@ var chart2 = c3.generate({
       }
     },
     axis: {
+      x: {
+        label: 'Year'
+      },
+      y: {
+        label: 'Wins'
+      },
       y2: {
         show: true,
-        inverted: true              // ADD
+        inverted: true,
+        label: 'Rank'// ADD
       }
     },
         zoom: {
@@ -46,7 +56,12 @@ var chart2 = c3.generate({
 });
 function teamAdd(team) {
     chart.load({
-        url: team,
+        url: team
+       })
+    };
+function teamRemove(team) {
+    chart.unload({
+        url: team
        });
 }
 
@@ -56,6 +71,11 @@ function teamLoad(team) {
        });
 }
 
+function teamUnload(team) {
+    chart2.unload({
+        url: team,
+       });
+}
 function rankRev(value) {
 return 33-value;
 }
