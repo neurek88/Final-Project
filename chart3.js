@@ -11,7 +11,7 @@ var chart = c3.generate({
         duration: 500
       },
   legend:{
-    hide: ['Year','Lg','Tm','L','T','Playoffs','PF','PA','PD','Coaches','AV','Passer','Rusher','Receiver','Offense Rank','Yds','Defense Rank','Yds','T/G','Pts±','Yds±','out of','MoV','SoS','SRS','OSRS','DSRS']
+    hide: ['Year','Lg','Tm','L','T','Playoffs','PF','PA','PD','Coaches','AV','Passer','Rusher','Receiver','OffenseRank','Yds','DefenseRank','Yds','T/G','Pts±','Yds±','out of','MoV','SoS','SRS','OSRS','DSRS'],
   }
 });
 
@@ -55,11 +55,6 @@ function teamLoad(team) {
         url: team,
        });
 }
-function loadData () {
-  chart2.data.values(DefenseRank);
-}
-
-console.log(loadData())
 
 function rankRev(value) {
 return 33-value;
