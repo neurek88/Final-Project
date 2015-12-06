@@ -1,5 +1,32 @@
 $(document).ready(function() {
-  //TODO: place your code to construct the graph here
+nv.addGraph(function() {
+  var chart = nv.models.lineChart()
+                .margin({left: 100})  //Adjust chart margins to give the x-axis some breathing room.
+                .useInteractiveGuideline(true)  //We want nice looking tooltips and a guideline!
+                .transitionDuration(350)  //how fast do you want the lines to transition?
+                .showLegend(true)       //Show the legend, allowing users to turn on/off line series.
+                .showYAxis(true)        //Show the y-axis
+                .showXAxis(true)        //Show the x-axis
+  ;
+
+  chart.xAxis     //Chart x-axis settings
+      .axisLabel('Time (ms)')
+
+  chart.yAxis     //Chart y-axis settings
+      .axisLabel('Voltage (v)')
+
+  /* Done setting the chart up? Time to render it!*/
+  var myData = csvData;   //You need data...
+
+  d3.select('#chart svg')    //Select the <svg> element you want to render the chart in.
+      .datum(myData)         //Populate the <svg> element with chart data...
+      .call(chart);          //Finally, render the chart!
+
+  //Update the chart when window resizes.
+  nv.utils.windowResize(function() { chart.update() });
+  return chart;
+});
+
 var margin = {top: 30, right: 40, bottom: 50, left: 50},
     width = 850 - margin.left - margin.right,
     height = 425 - margin.top - margin.bottom;
@@ -64,10 +91,37 @@ svg.append("text")
         .style("text-anchor", "middle")
         .text("Year");
 
+  //Mouseover tip
+var tip = d3.tip()
+	.attr('class', 'd3-tip')
+	.offset([120, 40])
+	.html(function(d) {
+	    return "<strong>" + d.Year +
+                " </strong><br>" +
+		d.Wins + " Wins" + "<br>" +
+		d.OffenseRank + "<br>" +
+		d.DefenseRank + "<br> " + d.playoffs +
+             "<br>";
+	});
+    svg.call(tip);
+
+svg.selectAll(".dot")
+	  .append("circle")
+	  .attr('class', 'datapoint')
+	  .attr('cx', function(d) { return x(d.year); })
+	  .attr('cy', function(d) { return y0(d.Wins); })
+	  .attr('r', 6)
+	  .attr('fill', 'white')
+	  .attr('stroke', 'steelblue')
+	  .attr('stroke-width', '3')
+	  .on('mouseover', tip.show)
+	  .on('mouseout', tip.hide);
+
+
 // Get the data
 d3.csv("data/bengals_history.csv", function(error, data) {
     data.forEach(function(d) {
-        d.Wins = +d.Wins;
+        d.BengalsWins = +d.Wins;
         d.year = +d.Year;
         d.Opts = (33- (+d.OffenseRank));
         d.Dpts = (33- (+d.DefenseRank));
