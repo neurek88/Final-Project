@@ -4,11 +4,12 @@ var chart = c3.generate({
     data: {
       url: 'data/bengals_history.csv',
       x: 'Year',
+      type: 'spline',
       colors: '#ff9900',
       hide: ['Year','Lg','Tm','L','T','Playoffs','PF','PA','PD','Coaches','AV','Passer','Rusher','Receiver','OffenseRank','Yds','DefenseRank','Yds','T/G','Pts±','Yds±','out of','MoV','SoS','SRS','OSRS','DSRS'],
     },
   tooltip: {
-        grouped: false // Default true
+        grouped: true // Default true
     },
   transition: {
         duration: 760
@@ -116,15 +117,19 @@ svg.selectAll(".dot")
 	  .on('mouseout', tip.hide);
 }
 */
-function teamAdd(team) {
+function teamAdd(team,wins) {
     chart.load({
-        url: team
+        url: team,
+      columns: wins,
        })
     };
 function teamRemove(team) {
     chart.unload({
         url: team
        });
+}
+function clearChart1() {
+ chart.unload();
 }
 
 function teamLoad(team) {
@@ -137,6 +142,9 @@ function teamUnload(team) {
     chart2.unload({
         url: team,
        });
+}
+function clearChart2() {
+  chart2.unload();
 }
 function rankRev(value) {
 return 33-value;
