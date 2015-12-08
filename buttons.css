@@ -1,0 +1,168 @@
+button:hover {
+  font-weight:bold;
+}
+
+button:hover.bears {
+ background-color:#03202F;
+  color:#DD4814;
+}
+
+button:hover.cardinals {
+ background-color:#9b2743;
+  color:#000000;
+}
+
+button:hover.falcons {
+ background-color:#bd0d18;
+  color:#000000;
+}
+
+button:hover.ravens {
+ background-color:#280353;
+  color:#d0b240;
+}
+
+button:hover.bills {
+ background-color:#00338d;
+  color:#c60c30;
+}
+
+button:hover.panthers {
+ background-color:#0088ce;
+  color:#000000;
+}
+
+button:hover.bengals {
+ background-color:#fb4f14;
+  color:#000000;
+}
+
+button:hover.browns {
+ background-color:#26201e;
+  color:#fe3c00;
+}
+
+button:hover.cowboys {
+ background-color:#0d254c;
+  color:#c5ced6;
+}
+
+button:hover.broncos {
+ background-color:#fb4f14;
+  color:#002244;
+}
+
+button:hover.lions {
+ background-color:#006db0;
+  color:#c5c7cf;
+}
+
+button:hover.packers {
+ background-color:#203731;
+  color:#ffb612;
+}
+
+button:hover.texans {
+ background-color:#02253a;
+  color:#b31b34;
+}
+
+button:hover.colts {
+ background-color:#003b7b;
+  color:#ffffff;
+}
+
+button:hover.jaguars {
+ background-color:#d7a22a;
+  color:#006778;
+}
+
+button:hover.chiefs {
+ background-color:#b20032;
+  color:#f2c800;
+}
+
+button:hover.dolphins {
+ background-color:#008d97;
+  color:#f5811f;
+}
+
+button:hover.vikings {
+ background-color:#3b0160;
+  color:#f0bf00;
+}
+
+button:hover.patriots {
+ background-color:#0d254c;
+  color:#c80815;
+}
+
+button:hover.saints {
+ background-color:#000000;
+  color:#d2b887;
+}
+
+button:hover.giants {
+ background-color:#192f6b;
+  color:#ca001a;
+}
+
+button:hover.jets {
+ background-color:#0c371d;
+  color:#000000;
+}
+
+button:hover.raiders {
+ background-color:#000000;
+  color:#c4c8cb;
+}
+
+button:hover.eagles {
+ background-color:#003b48;
+  color:#000000;
+}
+
+button:hover.steelers {
+ background-color:#ffb612;
+  color:#000000;
+}
+
+button:hover.rams {
+ background-color:#13264b;
+  color:#c9af74;
+}
+
+button:hover.chargers {
+ background-color:#0072ce;
+  color:#ffb81c;
+}
+
+button:hover.forty9ers {
+ background-color:#af2e3c;
+  color:#e6be8a;
+}
+
+button:hover.seahawks {
+ background-color:#002244;
+  color:#69be28;
+}
+
+button:hover.buccaneers {
+ background-color:#89765f;
+  color:#d60a0b;
+}
+
+button:hover.titans {
+ background-color:#648fcc;
+  color:#0d254c;
+}
+
+button:hover.redskins {
+ background-color:#773141;
+  color:#ffb612;
+}
+
+button:hover.clear {
+  background-color: #000000;
+  color: #FFFFFF
+}
