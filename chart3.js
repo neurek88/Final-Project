@@ -1,6 +1,4 @@
 var csvData;
-var chart;
-var chart2;
                   d3.csv("data/bengals_history.csv", function(error, data) {
                     data.forEach(function(d) {
                       d.BengalsWins = +d.Bengals_Wins;
@@ -11,14 +9,14 @@ var chart2;
                       d.coach = d.Coaches
                   });
               csvData = data
-                exportData(csvData[1].Coaches);
+                exportData(data);
                     generateGraphs();
                 });
             function exportData (data) {
               console.log (data);
               }
 function generateGraphs() {
-var chart = c3.generate({
+chart = c3.generate({
   bindto: '#chart',
     data: {
       url: 'data/bengals_history.csv',
@@ -39,7 +37,7 @@ var chart = c3.generate({
   }
 });
 
-var chart2 = c3.generate({
+  chart2 = c3.generate({
   bindto: '#chart2',
     data: {
       url: 'data/bengals.csv',
@@ -136,7 +134,7 @@ svg.selectAll(".dot")
 	  .on('mouseout', tip.hide);
 }
 */
-
+}
 function teamAdd(team, color, dataName) {
     chart.load({
         url: team ,
@@ -166,4 +164,4 @@ function teamUnload(team) {
 function clearChart2() {
   chart2.unload();
 }
-}
+
