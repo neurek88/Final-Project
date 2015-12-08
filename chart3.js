@@ -1,15 +1,35 @@
-
+var csvData;
+var chart;
+var chart2;
+                  d3.csv("data/bengals_history.csv", function(error, data) {
+                    data.forEach(function(d) {
+                      d.BengalsWins = +d.Bengals_Wins;
+                      d.year = +d.Year;
+                      d.Opts = (33- (+d.OffenseRank));
+                      d.Dpts = (33- (+d.DefenseRank));
+                      d.playoffs = d.Playoffs;
+                      d.coach = d.Coaches
+                  });
+              csvData = data
+                exportData(csvData[1].Coaches);
+                    generateGraphs();
+                });
+            function exportData (data) {
+              console.log (data);
+              }
+function generateGraphs() {
 var chart = c3.generate({
   bindto: '#chart',
     data: {
       url: 'data/bengals_history.csv',
       x: 'Year',
       type: 'spline',
-      colors: '#ff9900',
+      colors: { 'Bengals_Wins': '#ff9900'
+            },
       hide: ['Year','Lg','Tm','L','T','Playoffs','PF','PA','PD','Coaches','AV','Passer','Rusher','Receiver','OffenseRank','Yds','DefenseRank','Yds','T/G','Pts±','Yds±','out of','MoV','SoS','SRS','OSRS','DSRS'],
     },
   tooltip: {
-        grouped: true // Default true
+        grouped: false // Default true
     },
   transition: {
         duration: 760
@@ -25,7 +45,7 @@ var chart2 = c3.generate({
       url: 'data/bengals.csv',
       x: 'Year',
       type: 'line',
-      hide: ['Lg','Tm','L','T','PF','PA','PD','Coaches','AV','Passer','Rusher','Receiver','Yds','Yds','T/G','Pts±','Yds±','out of','SoS','SRS','OSRS','DSRS', 'MoV'],
+      hide: ['Lg','Tm','L','T','PF','PA','Playoffs','PD','Coaches','AV','Passer','Rusher','Receiver','Yds','Yds','T/G','Pts±','Yds±','out of','SoS','SRS','OSRS','DSRS', 'MoV'],
       axes: {
         Wins: 'y',
         DefenseRank: 'y2',
@@ -46,37 +66,35 @@ var chart2 = c3.generate({
       }
     },
     tooltip: {
-      format: {
-            title: function (d) {
-                var format = d3.time.format('%d/%m/%Y');
-                return format(d)
-            }
-        },
-      contents: function (data, defaultTitleFormat, defaultValueFormat, color) {
-        var $$ = this, config = $$.config,
-            titleFormat = config.tooltip_format_title || defaultTitleFormat,
-            nameFormat = config.tooltip_format_name || function (name) { return name; },
-            valueFormat = config.tooltip_format_value || defaultValueFormat,
-            text, i, title, value;
+      contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
+          var $$ = this, config = $$.config,
+              titleFormat = config.tooltip_format_title || defaultTitleFormat,
+              nameFormat = config.tooltip_format_name || function (name) { return name; },
+              valueFormat = config.tooltip_format_value || defaultValueFormat,
+              text, i, title, value, name, bgcolor, coach;
+          for (i = 0; i < d.length; i++) {
+              if (! (d[i] && (d[i].value || d[i].value === 0))) { continue; }
 
-            for (i = 0; i < data.length; i++) {
-                if (! (data[i] && (data[i].value || data[i].value === 0))) { continue; }
+              if (! text) {
 
-                if (! text) {
-                  title = titleFormat ? titleFormat(data[i].x) : data[i].x;
-                  text = "<div id='tooltip' class='d3-tip'>";
-                }
-                value = valueFormat(data[i].value, data[i].ratio, data[i].id, data[i].index);
+                  title = titleFormat ? titleFormat(d[i].x) : d[i].x;
+                  text = "<table class='" + $$.CLASS.tooltip + "'>" + (title || title === 0 ? "<tr><th colspan='2'>" + title + "</th></tr>" : "");
+                text += "<td class='name'>" + csvData[i].Coaches + "</td>";
+                text += "<td class='name'>" + csvData[i].Playoffs + "</td>";
+              }
 
-                text += "<span class='info'>Text Title</span><br>";
-                text += "<span class='info'>"+ title +"</span><br>";
-                text += "<span class='value'>" + value + " g/km</span>";
-                text += "</div>";
-            }
+              name = nameFormat(d[i].name);
+              value = valueFormat(d[i].value, d[i].ratio, d[i].id, d[i].index);
+              bgcolor = $$.levelColor ? $$.levelColor(d[i].value) : color(d[i].id);
 
-        return text;
-    }
-},
+              text += "<tr class='" + $$.CLASS.tooltipName + "-" + d[i].id + "'>";
+              text += "<td class='name'><span style='background-color:" + bgcolor + "'></span>" + name + "</td>";
+              text += "<td class='value'>" + value + "</td>";
+              text += "</tr>";
+          }
+          return text + "</table>";
+      }
+  },
         zoom: {
       enabled: true
     },
@@ -84,9 +102,10 @@ var chart2 = c3.generate({
         duration: 500
       },
   legend:{
-    hide: ['Lg','Tm','L','T','PF','PA','PD','Coaches','AV','Passer','Rusher','Receiver','Yds','Yds','T/G','Pts±','Yds±','out of','SoS','SRS','OSRS','DSRS', 'MoV']
+    hide: ['Lg','Tm','L','Playoffs','T','PF','PA','PD','Coaches','AV','Passer','Rusher','Receiver','Yds','Yds','T/G','Pts±','Yds±','out of','SoS','SRS','OSRS','DSRS', 'MoV']
   }
 });
+
 /*
 function mouseTip() {
 //Mouseover tip
@@ -107,8 +126,8 @@ svg.selectAll(".dot")
 	  .data(csvdata)
 	  .enter().append("circle")
 	  .attr('class', 'datapoint')
-	  .attr('cx', function(d) { return x(d.pDate); })
-	  .attr('cy', function(d) { return y(d.pOdometer); })
+	  .attr('cx', function(d) { return x(d.year); })
+	  .attr('cy', function(d) { return y(d.Bengals_Wins); })
 	  .attr('r', 6)
 	  .attr('fill', 'white')
 	  .attr('stroke', 'steelblue')
@@ -117,12 +136,13 @@ svg.selectAll(".dot")
 	  .on('mouseout', tip.hide);
 }
 */
-function teamAdd(team,wins) {
+
+function teamAdd(team, color, dataName) {
     chart.load({
-        url: team,
-      columns: wins,
-       })
-    };
+        url: team ,
+        colors: ({dataName: d3.rgb(color)})
+               });
+    }
 function teamRemove(team) {
     chart.unload({
         url: team
@@ -146,6 +166,4 @@ function teamUnload(team) {
 function clearChart2() {
   chart2.unload();
 }
-function rankRev(value) {
-return 33-value;
 }

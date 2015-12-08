@@ -119,14 +119,22 @@ svg.selectAll(".dot")
 
 
 // Get the data
-d3.csv("data/bengals_history.csv", function(error, data) {
+var csvData;
+  d3.csv("data/bengals_history.csv", function(error, data) {
     data.forEach(function(d) {
-        d.BengalsWins = +d.Wins;
+        d.BengalsWins = +d.Bengals_Wins;
         d.year = +d.Year;
         d.Opts = (33- (+d.OffenseRank));
         d.Dpts = (33- (+d.DefenseRank));
         d.playoffs = d.Playoffs;
+        d.coach = d.Coaches
     });
+    csvData = data
+    exportData(csvData[1].Coaches);
+  });
+    function exportData (data) {
+      console.log (data);
+    }
 
     // Scale the range of the data
     x.domain(d3.extent(data, function(d) { return d.year; }));
@@ -173,10 +181,6 @@ d3.csv("data/bengals_history.csv", function(error, data) {
         .call(yAxisRight);
 
 });
-
-})
-
-
 function sumArray(arr) {
  var sum = 0;
  for(var i=0; i<arr.length; i++) {
