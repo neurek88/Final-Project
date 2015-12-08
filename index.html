@@ -38,6 +38,7 @@
     min-width: 91px;
 }
 
+<<<<<<< HEAD
 .d3-tip .info {
     font-size: 9px;
     color: #8897b4
@@ -59,21 +60,160 @@
 	margin-left: -8px;
 }
     </style>
+=======
+    <!--Additional Button CSS-->
+    <link href="buttons.css" rel="stylesheet" type="text/css">
+
+>>>>>>> refs/remotes/origin/master
       </head>
     <body>
+    <div class="col-sm-12">
     <h1>Football History</h1>
         <h2>Record</h2>
+        <p>Use the buttons below to display each team's wins over the years.</p>
+
     <div id="chart"></div>
+<<<<<<< HEAD
         <button class='small' onclick="teamAdd('data/bearsHistory.csv', '#000999')">Bears</button>
         <button class='small' onclick="teamAdd('data/falconsHistory.csv','#ff0000')">Falcons</button>
         <button class='small' onclick="teamAdd('data/bengals_history.csv','#ff9900')">Bengals</button>
         <button class='small' onclick="clearChart1()">Clear All</button>
+=======
+    </div>
+        <div class="col-sm-6 text-center">
+            <button class="bengals" onclick="teamAdd('data/bengals_history.csv','#fb4f14')">Bengals</button>
+            <button class="browns" onclick="teamAdd('data/browns_History.csv','#26201e')">Browns</button>
+            <button class="ravens" onclick="teamAdd('data/ravens_History.csv','#280353')">Ravens</button>
+            <button class="steelers" onclick="teamAdd('data/steelers_History.csv','#ffb612')">Steelers</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="bears" onclick="teamAdd('data/bearsHistory.csv','#00338d')">Bears</button>
+            <button class="lions" onclick="teamAdd('data/lions_History.csv','#006db0')">Lions</button>
+            <button class="packers" onclick="teamAdd('data/packers_History.csv','#203731')">Packers</button>
+            <button class="vikings" onclick="teamAdd('data/vikings_History.csv','#3b0160')">Vikings</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="jets" onclick="teamAdd('data/jets_History.csv','#0c371d')">Jets</button>
+            <button class="dolphins" onclick="teamAdd('data/dolphins_History.csv','#008d97')">Dolphins</button>
+            <button class="patriots" onclick="teamAdd('data/patriots_History.csv','#0d254c')">Patriots</button>
+            <button class="bills" onclick="teamAdd('data/bills_History.csv','#00338D')">Bills</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="cowboys" onclick="teamAdd('data/cowboys_History.csv','#0d254c')">Cowboys</button>
+            <button class="giants" onclick="teamAdd('data/giants_History.csv','#192f6b')">Giants</button>
+            <button class="eagles" onclick="teamAdd('data/eagles_History.csv','#003b48')">Eagles</button>
+            <button class="redskins" onclick="teamAdd('data/redskins_History.csv','#773141')">Redskins</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="texans" onclick="teamAdd('data/texans_History.csv','#02253A')">Texans</button>
+            <button class="colts" onclick="teamAdd('data/colts_History.csv','#003b7b')">Colts</button>
+            <button class="jaguars" onclick="teamAdd('data/jaguars_History.csv','#d7a22a')">Jaguars</button>
+            <button class="titans" onclick="teamAdd('data/titans_History.csv','#648fcc')">Titans</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="panthers" onclick="teamAdd('data/panthers_History.csv','#0088ce')">Panthers</button>
+            <button class="saints" onclick="teamAdd('data/saints_History.csv','#d2b887')">Saints</button>
+            <button class="buccaneers" onclick="teamAdd('data/buccaneers_History.csv','#89765f')">Buccaneers</button>
+            <button class="falcons" onclick="teamAdd('data/falconsHistory.csv','#bdod18')">Falcons</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="chiefs" onclick="teamAdd('data/chiefs_History.csv','#b20032')">Chiefs</button>
+            <button class="raiders" onclick="teamAdd('data/raiders_History.csv','#000000')">Raiders</button>
+            <button class="broncos" onclick="teamAdd('data/broncos_History.csv','#fb4f14')">Broncos</button>
+            <button class="chargers" onclick="teamAdd('data/chargers_History.csv','#0072ce')">Chargers</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="cardinals" onclick="teamAdd('data/cardinals_History.csv','#9b2743')">Cardinals</button>
+            <button class="rams" onclick="teamAdd('data/rams_History.csv','#13264b')">Rams</button>
+            <button class="forty9ers" onclick="teamAdd('data/49ers_History.csv','#af2e3c')">49ers</button>
+            <button class="seahawks" onclick="teamAdd('data/seahawks_History.csv','#69be28')">Seahawks</button>
+        </div>
+
+        <!--clear button-->
+        <div class="col-sm-12 text-center">
+            <button class="clear" onclick="teamRemove()">Clear</button>
+        </div>
+
+        <div class="col-sm-12">
+>>>>>>> refs/remotes/origin/master
         <h2>Offense and Defense Rank</h2>
+            <p>Check out how your team ranked in offense and defense, and see how that translates into wins.</p>
         <div id="chart2"></div>
+<<<<<<< HEAD
         <button class='small' onclick="teamLoad('data/bears.csv')">Bears</button>
         <button class='small' onclick="teamLoad('data/falcons.csv')">Falcons</button>
         <button class='small' onclick="teamLoad('data/bengals.csv')">Bengals</button>
         <button class='small' onclick="clearChart2()">Clear All</button>
+=======
+        </div>
+          <div class="col-sm-6 text-center">
+            <button class="bengals" onclick="teamLoad('data/bengals_history.csv','#fb4f14')">Bengals</button>
+            <button class="browns" onclick="teamLoad('data/browns_History.csv','#26201e')">Browns</button>
+            <button class="ravens" onclick="teamLoad('data/ravens_History.csv','#280353')">Ravens</button>
+            <button class="steelers" onclick="teamLoad('data/steelers_History.csv','#ffb612')">Steelers</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="bears" onclick="teamLoad('data/bearsHistory.csv','#00338d')">Bears</button>
+            <button class="lions" onclick="teamLoad('data/lions_History.csv','#006db0')">Lions</button>
+            <button class="packers" onclick="teamLoad('data/packers_History.csv','#203731')">Packers</button>
+            <button class="vikings" onclick="teamLoad('data/vikings_History.csv','#3b0160')">Vikings</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="jets" onclick="teamLoad('data/jets_History.csv','#0c371d')">Jets</button>
+            <button class="dolphins" onclick="teamLoad('data/dolphins_History.csv','#008d97')">Dolphins</button>
+            <button class="patriots" onclick="teamLoad('data/patriots_History.csv','#0d254c')">Patriots</button>
+            <button class="bills" onclick="teamLoad('data/bills_History.csv','#00338D')">Bills</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="cowboys" onclick="teamLoad('data/cowboys_History.csv','#0d254c')">Cowboys</button>
+            <button class="giants" onclick="teamLoad('data/giants_History.csv','#192f6b')">Giants</button>
+            <button class="eagles" onclick="teamLoad('data/eagles_History.csv','#003b48')">Eagles</button>
+            <button class="redskins" onclick="teamLoad('data/redskins_History.csv','#773141')">Redskins</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="texans" onclick="teamLoad('data/texans_History.csv','#02253A')">Texans</button>
+            <button class="colts" onclick="teamLoad('data/colts_History.csv','#003b7b')">Colts</button>
+            <button class="jaguars" onclick="teamLoad('data/jaguars_History.csv','#d7a22a')">Jaguars</button>
+            <button class="titans" onclick="teamLoad('data/titans_History.csv','#648fcc')">Titans</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="panthers" onclick="teamLoad('data/panthers_History.csv','#0088ce')">Panthers</button>
+            <button class="saints" onclick="teamLoad('data/saints_History.csv','#d2b887')">Saints</button>
+            <button class="buccaneers" onclick="teamLoad('data/buccaneers_History.csv','#89765f')">Buccaneers</button>
+            <button class="falcons" onclick="teamLoad('data/falconsHistory.csv','#bdod18')">Falcons</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="chiefs" onclick="teamLoad('data/chiefs_History.csv','#b20032')">Chiefs</button>
+            <button class="raiders" onclick="teamLoad('data/raiders_History.csv','#000000')">Raiders</button>
+            <button class="broncos" onclick="teamLoad('data/broncos_History.csv','#fb4f14')">Broncos</button>
+            <button class="chargers" onclick="teamLoad('data/chargers_History.csv','#0072ce')">Chargers</button>
+        </div>
+
+        <div class="col-sm-6 text-center">
+            <button class="cardinals" onclick="teamLoad('data/cardinals_History.csv','#9b2743')">Cardinals</button>
+            <button class="rams" onclick="teamLoad('data/rams_History.csv','#13264b')">Rams</button>
+            <button class="forty9ers" onclick="teamLoad('data/49ers_History.csv','#af2e3c')">49ers</button>
+            <button class="seahawks" onclick="teamLoad('data/seahawks_History.csv','#69be28')">Seahawks</button>
+        </div>
+
+        <!--clear button-->
+        <div class="col-sm-12 text-center">
+            <button class="clear" onclick="teamUnload()">Clear</button>
+        </div>
+>>>>>>> refs/remotes/origin/master
     <script src="chart3.js" type="text/javascript"></script>
     </body>
 </html>
